@@ -57,7 +57,7 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="relative h-[340px] [perspective:1400px]">
+        <div className="relative h-[430px] [perspective:1400px] sm:h-[360px]">
           {reviews.map((r, i) => {
             const offset = (i - index + reviews.length) % reviews.length;
             const isActive = offset === 0;
@@ -67,34 +67,44 @@ export default function Reviews() {
                 key={r.name}
                 animate={{
                   z: -offset * 60,
-                  y: offset * 26,
+                  y: offset * 18,
                   rotateX: offset * 4,
-                  opacity: visible ? 1 - offset * 0.22 : 0,
+                  opacity: visible ? 1 : 0,
                   scale: 1 - offset * 0.05,
                 }}
                 transition={{ type: "spring", stiffness: 260, damping: 30 }}
-                style={{ transformStyle: "preserve-3d", pointerEvents: isActive ? "auto" : "none" }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  zIndex: reviews.length - offset,
+                  pointerEvents: isActive ? "auto" : "none",
+                }}
                 className="absolute inset-x-0 top-0"
+                aria-hidden={!isActive}
               >
-                <article className="rounded-xl3 border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
-                  <Icon.quote className="h-9 w-9 text-gold/70" />
-                  <p className="mt-4 font-display text-2xl italic leading-snug text-cream">
-                    {r.quote}
-                  </p>
-                  <div className="mt-7 flex items-center gap-4">
-                    <span className="grid h-12 w-12 place-items-center rounded-full bg-terracotta font-display text-lg text-cream">
-                      {r.initial}
-                    </span>
-                    <div>
-                      <div className="font-semibold">{r.name}</div>
-                      <div className="text-xs uppercase tracking-wide text-cream/60">{r.meta}</div>
+                <article className="overflow-hidden rounded-xl3 border border-cream/15 bg-rosewood p-7 shadow-lift sm:p-8">
+                  <motion.div
+                    animate={{ opacity: isActive ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Icon.quote className="h-9 w-9 text-gold/70" />
+                    <p className="mt-4 font-display text-xl italic leading-snug text-cream sm:text-2xl">
+                      {r.quote}
+                    </p>
+                    <div className="mt-7 flex items-center gap-4">
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-terracotta font-display text-lg text-cream">
+                        {r.initial}
+                      </span>
+                      <div className="min-w-0">
+                        <div className="font-semibold">{r.name}</div>
+                        <div className="text-xs uppercase tracking-wide text-cream/60">{r.meta}</div>
+                      </div>
+                      <div className="ml-auto flex shrink-0 gap-0.5">
+                        {Array.from({ length: r.rating }).map((_, s) => (
+                          <Icon.star key={s} className="h-4 w-4 text-gold" />
+                        ))}
+                      </div>
                     </div>
-                    <div className="ml-auto flex gap-0.5">
-                      {Array.from({ length: r.rating }).map((_, s) => (
-                        <Icon.star key={s} className="h-4 w-4 text-gold" />
-                      ))}
-                    </div>
-                  </div>
+                  </motion.div>
                 </article>
               </motion.div>
             );
