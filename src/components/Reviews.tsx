@@ -74,7 +74,7 @@ export default function Reviews() {
                 }}
                 transition={{ type: "spring", stiffness: 260, damping: 30 }}
                 style={{ transformStyle: "preserve-3d", pointerEvents: isActive ? "auto" : "none" }}
-                className="absolute inset-x-0 top-0"
+                className={`absolute inset-x-0 top-0 ${!isActive ? "hidden md:block" : ""}`}
               >
                 <article className="rounded-xl3 border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
                   <Icon.quote className="h-9 w-9 text-gold/70" />
