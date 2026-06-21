@@ -67,22 +67,23 @@ export default function Visit() {
             </div>
           </div>
 
-          <a
-            href={business.mapsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="group relative block overflow-hidden rounded-xl2 border border-line shadow-soft"
-          >
-            <img
-              src={`https://staticmap.openstreetmap.de/staticmap.php?center=40.7283,22.9159&zoom=15&size=900x260&markers=40.7283,22.9159,red-pushpin`}
-              alt={`Map showing ${business.name} in ${business.city}`}
-              className="h-[180px] w-full object-cover transition duration-500 group-hover:scale-105"
+          <div className="group relative overflow-hidden rounded-xl2 border border-line shadow-soft">
+            <iframe
+              title={`Map showing ${business.name} in ${business.city}`}
+              src="https://www.google.com/maps?q=Stella+attiva+Aristotelous+2+Oreokastro+570+13&z=15&output=embed"
+              className="h-[200px] w-full grayscale-[0.15]"
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
-            <span className="absolute bottom-3 right-3 btn-ink text-xs">
+            <a
+              href={business.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute bottom-3 right-3 btn-ink text-xs"
+            >
               Open in Maps <Icon.arrow className="h-3.5 w-3.5" />
-            </span>
-          </a>
+            </a>
+          </div>
         </div>
 
         {/* Right: schedule accordion */}
