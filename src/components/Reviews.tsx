@@ -57,7 +57,7 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="relative h-[340px] [perspective:1400px]">
+        <div className="relative h-[420px] md:h-[340px] [perspective:1400px]">
           {reviews.map((r, i) => {
             const offset = (i - index + reviews.length) % reviews.length;
             const isActive = offset === 0;
