@@ -57,7 +57,42 @@ export default function Reviews() {
           </div>
         </div>
 
-        <div className="relative h-[420px] md:h-[340px] [perspective:1400px]">
+        {/* Mobile: μόνο η active κάρτα */}
+        <div className="block md:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={reviews[index].name}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.3 }}
+            >
+              <article className="rounded-xl border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
+                <Icon.quote className="h-9 w-9 text-gold/70" />
+                <p className="mt-4 font-display text-2xl italic leading-snug text-cream">
+                  {reviews[index].quote}
+                </p>
+                <div className="mt-7 flex items-center gap-4">
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-terracotta font-display text-lg text-cream">
+                    {reviews[index].initial}
+                  </span>
+                  <div>
+                    <div className="font-semibold">{reviews[index].name}</div>
+                    <div className="text-xs uppercase tracking-wide text-cream/60">{reviews[index].meta}</div>
+                  </div>
+                  <div className="ml-auto flex gap-0.5">
+                    {Array.from({ length: reviews[index].rating }).map((_, s) => (
+                      <Icon.star key={s} className="h-4 w-4 text-gold" />
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Desktop: stacked 3D effect */}
+        <div className="relative hidden h-[340px] md:block [perspective:1400px]">
           {reviews.map((r, i) => {
             const offset = (i - index + reviews.length) % reviews.length;
             const isActive = offset === 0;
@@ -74,9 +109,9 @@ export default function Reviews() {
                 }}
                 transition={{ type: "spring", stiffness: 260, damping: 30 }}
                 style={{ transformStyle: "preserve-3d", pointerEvents: isActive ? "auto" : "none" }}
-                className={`absolute inset-x-0 top-0 ${!isActive ? "hidden md:block" : ""}`}
+                className="absolute inset-x-0 top-0"
               >
-                <article className="rounded-xl3 border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
+                <article className="rounded-xl border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
                   <Icon.quote className="h-9 w-9 text-gold/70" />
                   <p className="mt-4 font-display text-2xl italic leading-snug text-cream">
                     {r.quote}
@@ -101,8 +136,6 @@ export default function Reviews() {
           })}
         </div>
       </div>
-
-      <AnimatePresence />
     </section>
   );
 }
