@@ -1,28 +1,27 @@
 import { motion } from "framer-motion";
 import { Icon, iconMap } from "./icons";
 import { stats } from "../data/business";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../data/translations";
 
 export default function WhyUs() {
+  const { lang } = useLang();
+  const tr = t[lang].whyus;
+
   return (
     <section id="why" className="relative overflow-hidden bg-sand py-24 sm:py-32">
       <div className="container-px">
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow justify-center">
-            <span className="h-px w-8 bg-terracotta" /> Why women keep coming back
+            <span className="h-px w-8 bg-terracotta" /> {tr.eyebrow}
             <span className="h-px w-8 bg-terracotta" />
           </span>
           <h2 className="mt-4 font-body text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            Small shop, big on{" "}
-            <span className="font-display font-medium italic text-terracotta-deep">
-              the details
-            </span>
+            {tr.heading1}{" "}
+            <span className="font-display font-medium italic text-terracotta-deep">{tr.heading2}</span>
           </h2>
-          <p className="mt-4 text-muted">
-            No pushy sales, no overwhelming racks. Just a warm room, a sharp eye, and
-            pieces worth the trip.
-          </p>
+          <p className="mt-4 text-muted">{tr.sub}</p>
         </div>
-
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => {
             const IconC = iconMap[s.icon];
