@@ -5,12 +5,26 @@ import { business, schedule } from "../data/business";
 
 const dayOrder = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+function parseTime(t: string): number {
+  const [h, m] = t.trim().split(":").map(Number);
+  return h * 60 + m;
+}
+
+function isOpenNow(hours: string[]): boolean {
+  const now = new Date();
+  const current = now.getHours() * 60 + now.getMinutes();
+  return hours.some((slot) => {
+    const [from, to] = slot.split("–").map(parseTime);
+    return current >= from && current < to;
+  });
+}
+
 export default function Visit() {
   const todayName = dayOrder[new Date().getDay()];
   const todayIndex = schedule.findIndex((d) => d.day === todayName);
   const [openIndex, setOpenIndex] = useState(todayIndex === -1 ? 0 : todayIndex);
   const today = schedule[todayIndex];
-  const openNow = today && !today.closed;
+  const openNow = today && !today.closed && isOpenNow(today.hours);
 
   return (
     <section id="visit" className="bg-cream py-24 sm:py-32">
@@ -50,7 +64,7 @@ export default function Visit() {
                 }`}
               />
               <span className="text-sm font-medium text-ink">
-                {openNow ? "Open today" : "Closed today"} ·{" "}
+                {openNow ? "Open now" : "Closed now"} ·{" "}
                 <span className="text-muted">
                   {today ? today.hours.join(" & ") : "See full hours"}
                 </span>
@@ -75,7 +89,7 @@ export default function Visit() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            <a
+            
               href={business.mapsUrl}
               target="_blank"
               rel="noreferrer"
