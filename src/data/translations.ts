@@ -9,49 +9,29 @@ export type TranslationData = {
     cta2: string;
   };
   marquee: { kind: string; text: string }[];
-  services: { eyebrow: string; heading1: string; heading2: string; sub: string };
-  whyus: { eyebrow: string; heading1: string; heading2: string; sub: string };
+  services: {
+    eyebrow: string; heading1: string; heading2: string; sub: string;
+    items: { title: string; blurb: string }[];
+  };
+  whyus: {
+    eyebrow: string; heading1: string; heading2: string; sub: string;
+    stats: { value: string; label: string; caption: string }[];
+  };
   reviews: { eyebrow: string; heading1: string; heading2: string; sub: string };
-  visit: { eyebrow: string; heading1: string; ourBoutique: string; openNow: string; closedNow: string; seeFullHours: string; getDirections: string; weeklyHours: string; weeklyHoursSub: string; today: string; closed: string };
+  visit: { eyebrow: string; heading1: string; city: string; ourBoutique: string; openNow: string; closedNow: string; seeFullHours: string; getDirections: string; weeklyHours: string; weeklyHoursSub: string; today: string; closed: string };
   cta: { eyebrow: string; heading1: string; heading2: string; sub: string; call: string; directions: string };
   footer: { description: string; getInTouch: string; hours: string; explore: string; googleProfile: string; rights: string; tagline: string };
 };
 
 export const t: Record<Lang, TranslationData> = {
   en: {
-    nav: {
-      shop: "Shop",
-      why: "Why Stella",
-      reviews: "Loved by",
-      visit: "Visit",
-    },
-    header: {
-      directions: "Directions",
-      call: "Call us",
-    },
+    nav: { shop: "Shop", why: "Why Stella", reviews: "Loved by", visit: "Visit" },
+    header: { directions: "Directions", call: "Call us" },
     hero: {
       slides: [
-        {
-          eyebrow: "Oreokastro · Women-owned boutique",
-          lead: "Get dressed for",
-          emphasis: "the moments",
-          tail: "that matter",
-          subtitle: "A hand-picked edit of dresses and separates, styled by women who actually want you to feel like yourself.",
-        },
-        {
-          eyebrow: "Occasion dressing made easy",
-          lead: "The dress you'll",
-          emphasis: "remember",
-          tail: "wearing",
-          subtitle: "Weddings, dinners, the day you just felt good — come in and we'll find the one together.",
-        },
-        {
-          eyebrow: "New arrivals every week",
-          lead: "Quietly confident",
-          emphasis: "everyday",
-          tail: "style",
-          subtitle: "Considered pieces in warm, wearable tones — the kind you reach for again and again.",
-        },
+        { eyebrow: "Oreokastro · Women-owned boutique", lead: "Get dressed for", emphasis: "the moments", tail: "that matter", subtitle: "A hand-picked edit of dresses and separates, styled by women who actually want you to feel like yourself." },
+        { eyebrow: "Occasion dressing made easy", lead: "The dress you'll", emphasis: "remember", tail: "wearing", subtitle: "Weddings, dinners, the day you just felt good — come in and we'll find the one together." },
+        { eyebrow: "New arrivals every week", lead: "Quietly confident", emphasis: "everyday", tail: "style", subtitle: "Considered pieces in warm, wearable tones — the kind you reach for again and again." },
       ],
       cta1: "Plan your visit",
       cta2: "Get directions",
@@ -71,12 +51,26 @@ export const t: Record<Lang, TranslationData> = {
       heading1: "More than a rack of clothes —",
       heading2: "a proper styling experience",
       sub: "Everything here is chosen by hand and styled with intention. Come for a dress, leave with a look that actually feels like you.",
+      items: [
+        { title: "Curated Womenswear", blurb: "A tight, season-led edit of dresses, blouses and separates — chosen piece by piece so every rack earns its place." },
+        { title: "Personal Styling", blurb: "Tell us the occasion; we'll pull the looks. One-on-one styling that flatters your shape, not a trend you'll regret." },
+        { title: "Occasion Dressing", blurb: "Weddings, christenings, a night that matters — find the dress that turns heads for the right reasons." },
+        { title: "New Arrivals Weekly", blurb: "Fresh pieces land on the floor every week, so there's always a reason to step back in." },
+        { title: "Delivery Across Greece", blurb: "Found it but can't make it in? We'll wrap it and send it to your door." },
+        { title: "Gift-Ready Wrapping", blurb: "Every purchase leaves beautifully wrapped — gifting made effortless." },
+      ],
     },
     whyus: {
       eyebrow: "Why women keep coming back",
       heading1: "Small shop, big on",
       heading2: "the details",
       sub: "No pushy sales, no overwhelming racks. Just a warm room, a sharp eye, and pieces worth the trip.",
+      stats: [
+        { value: "5.0", label: "Star rating", caption: "Every review, five stars" },
+        { value: "100%", label: "Recommend us", caption: "Shoppers who come back" },
+        { value: "Weekly", label: "New arrivals", caption: "Fresh edits on the floor" },
+        { value: "Women", label: "Owned & run", caption: "Styled by women, for women" },
+      ],
     },
     reviews: {
       eyebrow: "Loved in Oreokastro",
@@ -87,6 +81,7 @@ export const t: Record<Lang, TranslationData> = {
     visit: {
       eyebrow: "Come say hello",
       heading1: "Find us in the heart of",
+      city: "Oreokastro",
       ourBoutique: "Our boutique",
       openNow: "Open now",
       closedNow: "Closed now",
@@ -116,39 +111,13 @@ export const t: Record<Lang, TranslationData> = {
     },
   },
   gr: {
-    nav: {
-      shop: "Συλλογή",
-      why: "Γιατί Stella",
-      reviews: "Αγαπημένο",
-      visit: "Επίσκεψη",
-    },
-    header: {
-      directions: "Οδηγίες",
-      call: "Καλέστε μας",
-    },
+    nav: { shop: "Συλλογή", why: "Γιατί Stella", reviews: "Αγαπημένο", visit: "Επίσκεψη" },
+    header: { directions: "Οδηγίες", call: "Καλέστε μας" },
     hero: {
       slides: [
-        {
-          eyebrow: "Ωραιόκαστρο · Γυναικεία μπουτίκ",
-          lead: "Ντυθείτε για",
-          emphasis: "τις στιγμές",
-          tail: "που μετράνε",
-          subtitle: "Μια επιλεγμένη συλλογή φορεμάτων και separates, στυλαρισμένη από γυναίκες που θέλουν να νιώθετε τον εαυτό σας.",
-        },
-        {
-          eyebrow: "Ντύσιμο για κάθε περίσταση",
-          lead: "Το φόρεμα που θα",
-          emphasis: "θυμάστε",
-          tail: "για πάντα",
-          subtitle: "Γάμοι, βραδινές εξόδους, η μέρα που απλά νιώσατε υπέροχα — ελάτε και θα το βρούμε μαζί.",
-        },
-        {
-          eyebrow: "Νέες αφίξεις κάθε εβδομάδα",
-          lead: "Ήσυχη",
-          emphasis: "καθημερινή",
-          tail: "κομψότητα",
-          subtitle: "Σκεφτικά κομμάτια σε ζεστές, φορέσιμες αποχρώσεις — αυτά που επιλέγετε ξανά και ξανά.",
-        },
+        { eyebrow: "Ωραιόκαστρο · Γυναικεία μπουτίκ", lead: "Ντυθείτε για", emphasis: "τις στιγμές", tail: "που μετράνε", subtitle: "Μια επιλεγμένη συλλογή φορεμάτων και separates, στυλαρισμένη από γυναίκες που θέλουν να νιώθετε τον εαυτό σας." },
+        { eyebrow: "Ντύσιμο για κάθε περίσταση", lead: "Το φόρεμα που θα", emphasis: "θυμάστε", tail: "για πάντα", subtitle: "Γάμοι, βραδινές εξόδους, η μέρα που απλά νιώσατε υπέροχα — ελάτε και θα το βρούμε μαζί." },
+        { eyebrow: "Νέες αφίξεις κάθε εβδομάδα", lead: "Ήσυχη", emphasis: "καθημερινή", tail: "κομψότητα", subtitle: "Σκεφτικά κομμάτια σε ζεστές, φορέσιμες αποχρώσεις — αυτά που επιλέγετε ξανά και ξανά." },
       ],
       cta1: "Σχεδιάστε την επίσκεψή σας",
       cta2: "Οδηγίες",
@@ -168,12 +137,26 @@ export const t: Record<Lang, TranslationData> = {
       heading1: "Κάτι παραπάνω από ρούχα —",
       heading2: "μια πραγματική εμπειρία στυλ",
       sub: "Κάθε κομμάτι επιλέγεται χειροκίνητα με πρόθεση. Ελάτε για ένα φόρεμα, φύγετε με ένα look που σας εκφράζει.",
+      items: [
+        { title: "Επιλεγμένη Γυναικεία Μόδα", blurb: "Μια σχολαστική, εποχιακή επιλογή φορεμάτων, μπλουζών και separates — κάθε κομμάτι διαλεγμένο με γνώμονα το στυλ." },
+        { title: "Προσωπικό Στυλ", blurb: "Πείτε μας την περίσταση και εμείς θα βρούμε τα looks. Προσωπική καθοδήγηση που κολακεύει τη σιλουέτα σας." },
+        { title: "Ντύσιμο για Περιστάσεις", blurb: "Γάμοι, βαπτίσεις, μια βραδιά που μετράει — βρείτε το φόρεμα που θα κάνει εντύπωση για τους σωστούς λόγους." },
+        { title: "Νέες Αφίξεις Κάθε Εβδομάδα", blurb: "Φρέσκα κομμάτια κάθε εβδομάδα, για να έχετε πάντα έναν λόγο να ξαναπεράσετε." },
+        { title: "Αποστολή σε Όλη την Ελλάδα", blurb: "Βρήκατε κάτι αλλά δεν μπορείτε να έρθετε; Θα το στείλουμε στην πόρτα σας." },
+        { title: "Έτοιμο για Δώρο", blurb: "Κάθε αγορά φεύγει όμορφα τυλιγμένη — η τέλεια επιλογή για δώρο." },
+      ],
     },
     whyus: {
       eyebrow: "Γιατί οι γυναίκες επιστρέφουν",
       heading1: "Μικρό κατάστημα, μεγάλη",
       heading2: "προσοχή στη λεπτομέρεια",
       sub: "Χωρίς πίεση πωλήσεων, χωρίς υπερβολή. Μόνο ζεστό περιβάλλον, οξυδερκές μάτι και κομμάτια που αξίζουν την επίσκεψη.",
+      stats: [
+        { value: "5.0", label: "Αξιολόγηση", caption: "Κάθε κριτική, πέντε αστέρια" },
+        { value: "100%", label: "Μας συστήνουν", caption: "Πελάτισσες που επιστρέφουν" },
+        { value: "Εβδομαδιαίως", label: "Νέες αφίξεις", caption: "Φρέσκα κομμάτια συνεχώς" },
+        { value: "Γυναίκες", label: "Ιδιοκτησία", caption: "Από γυναίκες, για γυναίκες" },
+      ],
     },
     reviews: {
       eyebrow: "Αγαπημένο στο Ωραιόκαστρο",
@@ -184,6 +167,7 @@ export const t: Record<Lang, TranslationData> = {
     visit: {
       eyebrow: "Πείτε μας γεια",
       heading1: "Βρείτε μας στην καρδιά του",
+      city: "Ωραιοκάστρου",
       ourBoutique: "Η μπουτίκ μας",
       openNow: "Ανοιχτά τώρα",
       closedNow: "Κλειστά τώρα",
