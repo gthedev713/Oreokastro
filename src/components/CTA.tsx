@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { Icon } from "./icons";
 import { business } from "../data/business";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../data/translations";
 
 export default function CTA() {
+  const { lang } = useLang();
+  const tr = t[lang].cta;
+
   return (
     <section className="bg-cream px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
       <motion.div
@@ -16,23 +21,20 @@ export default function CTA() {
         <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-blush/20 blur-3xl" />
         <div className="relative">
           <span className="eyebrow justify-center text-gold">
-            <span className="h-px w-8 bg-gold" /> Your next favourite outfit is waiting
+            <span className="h-px w-8 bg-gold" /> {tr.eyebrow}
             <span className="h-px w-8 bg-gold" />
           </span>
           <h2 className="mx-auto mt-5 max-w-3xl text-balance font-body text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-            Stop scrolling.{" "}
-            <span className="font-display font-medium italic text-blush">Come get styled.</span>
+            {tr.heading1}{" "}
+            <span className="font-display font-medium italic text-blush">{tr.heading2}</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-cream/85">
-            Pop in this week, give us a call, or get directions — we'll have the rack
-            ready and the kettle on.
-          </p>
+          <p className="mx-auto mt-5 max-w-xl text-cream/85">{tr.sub}</p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <a href={`tel:${business.phoneHref}`} className="btn bg-cream text-ink hover:bg-blush">
-              <Icon.phone className="h-4 w-4" /> Call {business.phoneDisplay}
+              <Icon.phone className="h-4 w-4" /> {tr.call} {business.phoneDisplay}
             </a>
             <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="btn-ghost-light">
-              <Icon.pin className="h-4 w-4" /> Get directions
+              <Icon.pin className="h-4 w-4" /> {tr.directions}
             </a>
           </div>
         </div>
