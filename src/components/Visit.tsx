@@ -7,8 +7,8 @@ import { t } from "../data/translations";
 
 const dayOrder = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-function parseTime(t: string): number {
-  const [h, m] = t.trim().split(":").map(Number);
+function parseTime(time: string): number {
+  const [h, m] = time.trim().split(":").map(Number);
   return h * 60 + m;
 }
 
@@ -185,10 +185,3 @@ export default function Visit() {
                   </AnimatePresence>
                 </div>
               );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
