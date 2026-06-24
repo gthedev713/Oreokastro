@@ -62,7 +62,7 @@ export default function Visit() {
             <h2 className="mt-4 font-body text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
               {tr.heading1}{" "}
               <span className="font-display font-medium italic text-terracotta-deep">
-                {business.city}
+                {tr.city}
               </span>
             </h2>
           </div>
@@ -109,7 +109,7 @@ export default function Visit() {
 
           <div className="group relative overflow-hidden rounded-xl2 border border-line shadow-soft">
             <iframe
-              title={`Map showing ${business.name} in ${business.city}`}
+              title={`Map showing ${business.name} in ${tr.city}`}
               src="https://www.google.com/maps?q=Stella+attiva+Aristotelous+2+Oreokastro+570+13&z=15&output=embed"
               className="h-[200px] w-full grayscale-[0.15]"
               loading="lazy"
