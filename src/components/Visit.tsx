@@ -54,7 +54,6 @@ export default function Visit() {
   return (
     <section id="visit" className="bg-cream py-24 sm:py-32">
       <div className="container-px grid gap-8 lg:grid-cols-2">
-
         <div className="flex flex-col gap-6">
           <div>
             <span className="eyebrow">
@@ -91,7 +90,7 @@ export default function Visit() {
                 }`}
               />
               <span className="text-sm font-medium text-ink">
-                {openNow ? tr.openNow : tr.closedNow} {" · "}
+                {openNow ? tr.openNow : tr.closedNow}{" · "}
                 <span className="text-muted">
                   {today ? today.hours.join(" & ") : tr.seeFullHours}
                 </span>
@@ -102,12 +101,7 @@ export default function Visit() {
               <a href={`tel:${business.phoneHref}`} className="btn-primary">
                 <Icon.phone className="h-4 w-4" /> {business.phoneDisplay}
               </a>
-              
-                href={business.directionsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-outline"
-              >
+              <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="btn-outline">
                 <Icon.pin className="h-4 w-4" /> {tr.getDirections}
               </a>
             </div>
@@ -121,12 +115,7 @@ export default function Visit() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            
-              href={business.mapsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="absolute bottom-3 right-3 btn-ink text-xs"
-            >
+            <a href={business.mapsUrl} target="_blank" rel="noreferrer" className="absolute bottom-3 right-3 btn-ink text-xs">
               Open in Maps <Icon.arrow className="h-3.5 w-3.5" />
             </a>
           </div>
@@ -147,9 +136,7 @@ export default function Visit() {
                 <div
                   key={d.day}
                   className={`overflow-hidden rounded-2xl border transition-colors ${
-                    isToday
-                      ? "border-terracotta bg-terracotta/8"
-                      : "border-line bg-cream/60"
+                    isToday ? "border-terracotta bg-terracotta/8" : "border-line bg-cream/60"
                   }`}
                 >
                   <button
@@ -157,11 +144,7 @@ export default function Visit() {
                     className="flex w-full items-center justify-between px-5 py-4 text-left"
                   >
                     <span className="flex items-center gap-3">
-                      <span
-                        className={`font-display text-xl ${
-                          isToday ? "text-terracotta-deep" : "text-ink"
-                        }`}
-                      >
+                      <span className={`font-display text-xl ${isToday ? "text-terracotta-deep" : "text-ink"}`}>
                         {dayLabels[d.day]}
                       </span>
                       {isToday && (
@@ -171,17 +154,11 @@ export default function Visit() {
                       )}
                     </span>
                     <span className="flex items-center gap-3">
-                      <span
-                        className={`text-sm ${
-                          d.closed ? "text-rosewood" : "text-muted"
-                        }`}
-                      >
+                      <span className={`text-sm ${d.closed ? "text-rosewood" : "text-muted"}`}>
                         {d.closed ? tr.closed : d.hours[0]}
                       </span>
                       <Icon.chevron
-                        className={`h-4 w-4 text-muted transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-4 w-4 text-muted transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                       />
                     </span>
                   </button>
@@ -199,9 +176,7 @@ export default function Visit() {
                               <span
                                 key={h}
                                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                                  d.closed
-                                    ? "bg-rosewood/12 text-rosewood"
-                                    : "bg-olive/12 text-olive"
+                                  d.closed ? "bg-rosewood/12 text-rosewood" : "bg-olive/12 text-olive"
                                 }`}
                               >
                                 {h}
@@ -217,7 +192,6 @@ export default function Visit() {
             })}
           </div>
         </div>
-
       </div>
     </section>
   );
