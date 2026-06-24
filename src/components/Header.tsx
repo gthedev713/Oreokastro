@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Icon } from "./icons";
-import { business, navLinks } from "../data/business";
+import { business } from "../data/business";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../data/translations";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { lang, toggle } = useLang();
+  const tr = t[lang];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -18,6 +22,13 @@ export default function Header() {
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
+
+  const navLinks = [
+    { label: tr.nav.shop, href: "#services" },
+    { label: tr.nav.why, href: "#why" },
+    { label: tr.nav.reviews, href: "#reviews" },
+    { label: tr.nav.visit, href: "#visit" },
+  ];
 
   const mobileMenu = (
     <AnimatePresence>
@@ -64,11 +75,14 @@ export default function Header() {
             </nav>
             <div className="mt-auto flex flex-col gap-3 pt-8">
               <a href={`tel:${business.phoneHref}`} className="btn-primary w-full">
-                <Icon.phone className="h-4 w-4" /> Call {business.shortName}
+                <Icon.phone className="h-4 w-4" /> {tr.header.call} {business.shortName}
               </a>
               <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="btn-outline w-full">
-                <Icon.pin className="h-4 w-4" /> Get directions
+                <Icon.pin className="h-4 w-4" /> {tr.header.directions}
               </a>
+              <button onClick={toggle} className="btn-outline w-full">
+                {lang === "en" ? "🇬🇷 Ελληνικά" : "🇬🇧 English"}
+              </button>
             </div>
           </motion.div>
         </motion.div>
@@ -80,9 +94,7 @@ export default function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-cream/85 shadow-soft backdrop-blur-xl"
-            : "bg-transparent"
+          scrolled ? "bg-cream/85 shadow-soft backdrop-blur-xl" : "bg-transparent"
         }`}
       >
         <div className="container-px flex h-[72px] items-center justify-between">
@@ -91,9 +103,7 @@ export default function Header() {
               S
             </span>
             <span className="leading-tight">
-              <span className="block font-display text-xl tracking-tight text-ink">
-                {business.name}
-              </span>
+              <span className="block font-display text-xl tracking-tight text-ink">{business.name}</span>
               <span className="block text-[10px] font-semibold uppercase tracking-[0.32em] text-muted">
                 {business.city} · {business.region}
               </span>
@@ -109,11 +119,17 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
+            <button
+              onClick={toggle}
+              className="grid h-9 w-16 place-items-center rounded-full border border-ink/15 text-xs font-semibold text-ink transition hover:bg-ink/5"
+            >
+              {lang === "en" ? "GR" : "EN"}
+            </button>
             <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="btn-outline">
-              <Icon.pin className="h-4 w-4" /> Directions
+              <Icon.pin className="h-4 w-4" /> {tr.header.directions}
             </a>
             <a href={`tel:${business.phoneHref}`} className="btn-primary">
-              <Icon.phone className="h-4 w-4" /> Call us
+              <Icon.phone className="h-4 w-4" /> {tr.header.call}
             </a>
           </div>
 
@@ -126,7 +142,6 @@ export default function Header() {
           </button>
         </div>
       </header>
-
       {createPortal(mobileMenu, document.body)}
     </>
   );
