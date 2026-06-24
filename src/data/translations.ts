@@ -1,8 +1,23 @@
 import type { Lang } from "../context/LanguageContext";
 
-type Translations = typeof t.en;
+export type TranslationData = {
+  nav: { shop: string; why: string; reviews: string; visit: string };
+  header: { directions: string; call: string };
+  hero: {
+    slides: { eyebrow: string; lead: string; emphasis: string; tail: string; subtitle: string }[];
+    cta1: string;
+    cta2: string;
+  };
+  marquee: { kind: string; text: string }[];
+  services: { eyebrow: string; heading1: string; heading2: string; sub: string };
+  whyus: { eyebrow: string; heading1: string; heading2: string; sub: string };
+  reviews: { eyebrow: string; heading1: string; heading2: string; sub: string };
+  visit: { eyebrow: string; heading1: string; ourBoutique: string; openNow: string; closedNow: string; seeFullHours: string; getDirections: string; weeklyHours: string; weeklyHoursSub: string; today: string; closed: string };
+  cta: { eyebrow: string; heading1: string; heading2: string; sub: string; call: string; directions: string };
+  footer: { description: string; getInTouch: string; hours: string; explore: string; googleProfile: string; rights: string; tagline: string };
+};
 
-export const t: Record<Lang, Translations> = {
+export const t: Record<Lang, TranslationData> = {
   en: {
     nav: {
       shop: "Shop",
