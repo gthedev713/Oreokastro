@@ -25,9 +25,10 @@ export default function WhyUs() {
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => {
             const IconC = iconMap[s.icon];
+            const translated = tr.stats[i];
             return (
               <motion.div
-                key={s.label}
+                key={s.icon + i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -43,13 +44,13 @@ export default function WhyUs() {
                     <Icon.arrow className="h-5 w-5 -translate-x-2 text-muted opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:text-gold group-hover:opacity-100" />
                   </div>
                   <div className="mt-8 font-display text-5xl text-ink transition-colors duration-500 group-hover:text-cream">
-                    {s.value}
+                    {translated.value}
                   </div>
                   <div className="mt-2 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-500 group-hover:text-cream">
-                    {s.label}
+                    {translated.label}
                   </div>
                   <div className="mt-1 text-sm text-muted transition-colors duration-500 group-hover:text-cream/70">
-                    {s.caption}
+                    {translated.caption}
                   </div>
                 </div>
               </motion.div>
