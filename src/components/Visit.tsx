@@ -16,7 +16,10 @@ function isOpenNow(hours: string[]): boolean {
   const now = new Date();
   const current = now.getHours() * 60 + now.getMinutes();
   return hours.some((slot) => {
-    const [from, to] = slot.split("–").map(parseTime);
+    const parts = slot.split(/\s*[–-]\s*/);
+    if (parts.length < 2) return false;
+    const from = parseTime(parts[0]);
+    const to = parseTime(parts[1]);
     return current >= from && current < to;
   });
 }
@@ -51,6 +54,7 @@ export default function Visit() {
   return (
     <section id="visit" className="bg-cream py-24 sm:py-32">
       <div className="container-px grid gap-8 lg:grid-cols-2">
+
         <div className="flex flex-col gap-6">
           <div>
             <span className="eyebrow">
@@ -70,7 +74,9 @@ export default function Visit() {
                 <Icon.pin className="h-6 w-6" />
               </span>
               <div>
-                <div className="text-sm font-semibold uppercase tracking-wide text-muted">{tr.ourBoutique}</div>
+                <div className="text-sm font-semibold uppercase tracking-wide text-muted">
+                  {tr.ourBoutique}
+                </div>
                 <div className="mt-1 font-display text-2xl text-ink">{business.address}</div>
                 <div className="mt-1 text-sm text-muted">Plus code {business.plusCode}</div>
               </div>
@@ -79,9 +85,13 @@ export default function Visit() {
             <div className="my-6 h-px bg-line" />
 
             <div className="flex items-center gap-3">
-              <span className={`inline-flex h-2.5 w-2.5 rounded-full ${openNow ? "bg-olive" : "bg-rosewood"}`} />
+              <span
+                className={`inline-flex h-2.5 w-2.5 rounded-full ${
+                  openNow ? "bg-olive" : "bg-rosewood"
+                }`}
+              />
               <span className="text-sm font-medium text-ink">
-                {openNow ? tr.openNow : tr.closedNow} ·{" "}
+                {openNow ? tr.openNow : tr.closedNow} {" · "}
                 <span className="text-muted">
                   {today ? today.hours.join(" & ") : tr.seeFullHours}
                 </span>
@@ -92,7 +102,12 @@ export default function Visit() {
               <a href={`tel:${business.phoneHref}`} className="btn-primary">
                 <Icon.phone className="h-4 w-4" /> {business.phoneDisplay}
               </a>
-              <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="btn-outline">
+              
+                href={business.directionsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-outline"
+              >
                 <Icon.pin className="h-4 w-4" /> {tr.getDirections}
               </a>
             </div>
@@ -132,7 +147,9 @@ export default function Visit() {
                 <div
                   key={d.day}
                   className={`overflow-hidden rounded-2xl border transition-colors ${
-                    isToday ? "border-terracotta bg-terracotta/8" : "border-line bg-cream/60"
+                    isToday
+                      ? "border-terracotta bg-terracotta/8"
+                      : "border-line bg-cream/60"
                   }`}
                 >
                   <button
@@ -140,7 +157,11 @@ export default function Visit() {
                     className="flex w-full items-center justify-between px-5 py-4 text-left"
                   >
                     <span className="flex items-center gap-3">
-                      <span className={`font-display text-xl ${isToday ? "text-terracotta-deep" : "text-ink"}`}>
+                      <span
+                        className={`font-display text-xl ${
+                          isToday ? "text-terracotta-deep" : "text-ink"
+                        }`}
+                      >
                         {dayLabels[d.day]}
                       </span>
                       {isToday && (
@@ -150,11 +171,17 @@ export default function Visit() {
                       )}
                     </span>
                     <span className="flex items-center gap-3">
-                      <span className={`text-sm ${d.closed ? "text-rosewood" : "text-muted"}`}>
+                      <span
+                        className={`text-sm ${
+                          d.closed ? "text-rosewood" : "text-muted"
+                        }`}
+                      >
                         {d.closed ? tr.closed : d.hours[0]}
                       </span>
                       <Icon.chevron
-                        className={`h-4 w-4 text-muted transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        className={`h-4 w-4 text-muted transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
                       />
                     </span>
                   </button>
@@ -172,7 +199,9 @@ export default function Visit() {
                               <span
                                 key={h}
                                 className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                                  d.closed ? "bg-rosewood/12 text-rosewood" : "bg-olive/12 text-olive"
+                                  d.closed
+                                    ? "bg-rosewood/12 text-rosewood"
+                                    : "bg-olive/12 text-olive"
                                 }`}
                               >
                                 {h}
@@ -185,3 +214,11 @@ export default function Visit() {
                   </AnimatePresence>
                 </div>
               );
+            })}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
