@@ -11,11 +11,20 @@ import hero3 from "../assets/hero-3.jpg";
 const images = [hero1, hero2, hero3];
 const AUTO_MS = 5500;
 
+type SlideData = {
+  eyebrow: string;
+  lead: string;
+  emphasis: string;
+  tail: string;
+  subtitle: string;
+  image: string;
+};
+
 export default function Hero() {
   const [index, setIndex] = useState(0);
   const { lang } = useLang();
   const tr = t[lang].hero;
-  const slides = tr.slides.map((s, i) => ({ ...s, image: images[i] }));
+  const slides: SlideData[] = tr.slides.map((s, i: number) => ({ ...s, image: images[i] }));
 
   const go = useCallback((dir: number) => {
     setIndex((i) => (i + dir + slides.length) % slides.length);
@@ -85,7 +94,7 @@ export default function Hero() {
               <Icon.arrow className="h-5 w-5" />
             </button>
             <div className="ml-2 flex items-center gap-2">
-              {slides.map((_, i) => (
+              {slides.map((_: SlideData, i: number) => (
                 <button
                   key={i}
                   onClick={() => setIndex(i)}
