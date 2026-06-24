@@ -1,18 +1,12 @@
 import { Icon } from "./icons";
-
-const items = [
-  { kind: "stat", text: "5.0★ on Google" },
-  { kind: "quote", text: "“Beautiful clothes and lovely service” — Sakis M." },
-  { kind: "stat", text: "Women-owned in Oreokastro" },
-  { kind: "quote", text: "“Exactly what I was looking for” — Alexandra T." },
-  { kind: "stat", text: "New arrivals every week" },
-  { kind: "quote", text: "“A little boutique with real taste” — Christina N." },
-  { kind: "stat", text: "Delivery across Greece" },
-  { kind: "quote", text: "“Found my dress in ten minutes” — Dimitra K." },
-];
+import { useLang } from "../context/LanguageContext";
+import { t } from "../data/translations";
 
 export default function Marquee() {
+  const { lang } = useLang();
+  const items = t[lang].marquee;
   const loop = [...items, ...items];
+
   return (
     <div className="group relative overflow-hidden border-y border-terracotta-deep/30 bg-terracotta text-cream">
       <div className="flex w-max animate-marquee items-center gap-10 py-4 group-hover:[animation-play-state:paused]">
