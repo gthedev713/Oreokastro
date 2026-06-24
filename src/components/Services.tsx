@@ -35,9 +35,10 @@ export default function Services() {
         <div className="mt-14 grid auto-rows-[minmax(170px,auto)] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {services.map((s, i) => {
             const IconC = iconMap[s.icon];
+            const translated = tr.items[i];
             return (
               <motion.div
-                key={s.title}
+                key={s.icon + i}
                 initial={{ opacity: 0, y: 36 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -50,8 +51,8 @@ export default function Services() {
                       <IconC className="h-6 w-6" />
                     </div>
                     <div className="mt-6">
-                      <h3 className="font-display text-2xl text-ink">{s.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{s.blurb}</p>
+                      <h3 className="font-display text-2xl text-ink">{translated.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{translated.blurb}</p>
                     </div>
                   </div>
                 </TiltCard>
