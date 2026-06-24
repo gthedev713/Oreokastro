@@ -16,7 +16,7 @@ function isOpenNow(hours: string[]): boolean {
   const now = new Date();
   const current = now.getHours() * 60 + now.getMinutes();
   return hours.some((slot) => {
-    const parts = slot.split(/\s*[–-]\s*/);
+    const parts = slot.split(/\s*[\u2013\u2014-]\s*/);
     if (parts.length < 2) return false;
     const from = parseTime(parts[0]);
     const to = parseTime(parts[1]);
