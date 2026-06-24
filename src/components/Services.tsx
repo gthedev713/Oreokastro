@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import TiltCard from "./TiltCard";
 import { iconMap } from "./icons";
 import { services } from "../data/business";
+import { useLang } from "../context/LanguageContext";
+import { t } from "../data/translations";
 
 const tintBg: Record<string, string> = {
   terracotta: "bg-terracotta/12 text-terracotta-deep",
@@ -12,27 +14,24 @@ const tintBg: Record<string, string> = {
 };
 
 export default function Services() {
+  const { lang } = useLang();
+  const tr = t[lang].services;
+
   return (
     <section id="services" className="relative bg-cream py-24 sm:py-32">
       <div className="container-px">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <span className="eyebrow">
-              <span className="h-px w-8 bg-terracotta" /> What you'll find inside
+              <span className="h-px w-8 bg-terracotta" /> {tr.eyebrow}
             </span>
             <h2 className="mt-4 font-body text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-              More than a rack of clothes —{" "}
-              <span className="font-display font-medium italic text-terracotta-deep">
-                a proper styling experience
-              </span>
+              {tr.heading1}{" "}
+              <span className="font-display font-medium italic text-terracotta-deep">{tr.heading2}</span>
             </h2>
           </div>
-          <p className="max-w-sm text-muted">
-            Everything here is chosen by hand and styled with intention. Come for a
-            dress, leave with a look that actually feels like you.
-          </p>
+          <p className="max-w-sm text-muted">{tr.sub}</p>
         </div>
-
         <div className="mt-14 grid auto-rows-[minmax(170px,auto)] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {services.map((s, i) => {
             const IconC = iconMap[s.icon];
