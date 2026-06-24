@@ -1,4 +1,8 @@
-export const t = {
+import type { Lang } from "../context/LanguageContext";
+
+type Translations = typeof t.en;
+
+export const t: Record<Lang, Translations> = {
   en: {
     nav: {
       shop: "Shop",
@@ -39,13 +43,13 @@ export const t = {
     },
     marquee: [
       { kind: "stat", text: "5.0★ on Google" },
-      { kind: "quote", text: "\"Beautiful clothes and lovely service\" — Sakis M." },
+      { kind: "quote", text: "Beautiful clothes and lovely service — Sakis M." },
       { kind: "stat", text: "Women-owned in Oreokastro" },
-      { kind: "quote", text: "\"Exactly what I was looking for\" — Alexandra T." },
+      { kind: "quote", text: "Exactly what I was looking for — Alexandra T." },
       { kind: "stat", text: "New arrivals every week" },
-      { kind: "quote", text: "\"A little boutique with real taste\" — Christina N." },
+      { kind: "quote", text: "A little boutique with real taste — Christina N." },
       { kind: "stat", text: "Delivery across Greece" },
-      { kind: "quote", text: "\"Found my dress in ten minutes\" — Dimitra K." },
+      { kind: "quote", text: "Found my dress in ten minutes — Dimitra K." },
     ],
     services: {
       eyebrow: "What you'll find inside",
@@ -63,7 +67,7 @@ export const t = {
       eyebrow: "Loved in Oreokastro",
       heading1: "Eight reviews.",
       heading2: "Every one of them five stars.",
-      sub: "We're a small boutique, so every visit counts — and our shoppers keep telling the same story. Here's what they say in their own words.",
+      sub: "We're a small boutique, so every visit counts — and our shoppers keep telling the same story.",
     },
     visit: {
       eyebrow: "Come say hello",
@@ -136,13 +140,13 @@ export const t = {
     },
     marquee: [
       { kind: "stat", text: "5.0★ στο Google" },
-      { kind: "quote", text: "\"Όμορφα ρούχα και υπέροχη εξυπηρέτηση\" — Σάκης Μ." },
+      { kind: "quote", text: "Όμορφα ρούχα και υπέροχη εξυπηρέτηση — Σάκης Μ." },
       { kind: "stat", text: "Γυναικεία μπουτίκ στο Ωραιόκαστρο" },
-      { kind: "quote", text: "\"Ακριβώς αυτό που έψαχνα\" — Αλεξάνδρα Τ." },
+      { kind: "quote", text: "Ακριβώς αυτό που έψαχνα — Αλεξάνδρα Τ." },
       { kind: "stat", text: "Νέες αφίξεις κάθε εβδομάδα" },
-      { kind: "quote", text: "\"Μια μπουτίκ με πραγματικό γούστο\" — Χριστίνα Ν." },
+      { kind: "quote", text: "Μια μπουτίκ με πραγματικό γούστο — Χριστίνα Ν." },
       { kind: "stat", text: "Αποστολή σε όλη την Ελλάδα" },
-      { kind: "quote", text: "\"Βρήκα το φόρεμά μου σε δέκα λεπτά\" — Δήμητρα Κ." },
+      { kind: "quote", text: "Βρήκα το φόρεμά μου σε δέκα λεπτά — Δήμητρα Κ." },
     ],
     services: {
       eyebrow: "Τι θα βρείτε μέσα",
