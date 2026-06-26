@@ -17,7 +17,7 @@ export type TranslationData = {
     eyebrow: string; heading1: string; heading2: string; sub: string;
     stats: { value: string; label: string; caption: string }[];
   };
-  reviews: { eyebrow: string; heading1: string; heading2: string; sub: string };
+  reviews: { eyebrow: string; heading1: string; heading2: string; sub: string; items: { quote: string }[] };
   visit: { eyebrow: string; heading1: string; city: string; ourBoutique: string; openNow: string; closedNow: string; seeFullHours: string; getDirections: string; weeklyHours: string; weeklyHoursSub: string; today: string; closed: string };
   cta: { eyebrow: string; heading1: string; heading2: string; sub: string; call: string; directions: string };
   footer: { description: string; getInTouch: string; hours: string; explore: string; googleProfile: string; rights: string; tagline: string };
