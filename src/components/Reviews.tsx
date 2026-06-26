@@ -50,7 +50,7 @@ export default function Reviews() {
         <div className="block md:hidden">
           <AnimatePresence mode="wait">
             <motion.div
-              key={reviews[index].name}
+              key={reviews[index].name + lang}
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
@@ -59,7 +59,7 @@ export default function Reviews() {
               <article className="rounded-xl border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
                 <Icon.quote className="h-9 w-9 text-gold/70" />
                 <p className="mt-4 font-display text-2xl italic leading-snug text-cream">
-                  {reviews[index].quote}
+                  {tr.items[index].quote}
                 </p>
                 <div className="mt-7 flex items-center gap-4">
                   <span className="grid h-12 w-12 place-items-center rounded-full bg-terracotta font-display text-lg text-cream">
@@ -102,7 +102,9 @@ export default function Reviews() {
               >
                 <article className="rounded-xl border border-cream/15 bg-cream/[0.07] p-8 backdrop-blur-sm">
                   <Icon.quote className="h-9 w-9 text-gold/70" />
-                  <p className="mt-4 font-display text-2xl italic leading-snug text-cream">{r.quote}</p>
+                  <p className="mt-4 font-display text-2xl italic leading-snug text-cream">
+                    {tr.items[i].quote}
+                  </p>
                   <div className="mt-7 flex items-center gap-4">
                     <span className="grid h-12 w-12 place-items-center rounded-full bg-terracotta font-display text-lg text-cream">
                       {r.initial}
