@@ -17,7 +17,10 @@ export type TranslationData = {
     eyebrow: string; heading1: string; heading2: string; sub: string;
     stats: { value: string; label: string; caption: string }[];
   };
-  reviews: { eyebrow: string; heading1: string; heading2: string; sub: string; items: { quote: string }[] };
+  reviews: {
+    eyebrow: string; heading1: string; heading2: string; sub: string;
+    items: { quote: string }[];
+  };
   visit: { eyebrow: string; heading1: string; city: string; ourBoutique: string; openNow: string; closedNow: string; seeFullHours: string; getDirections: string; weeklyHours: string; weeklyHoursSub: string; today: string; closed: string };
   cta: { eyebrow: string; heading1: string; heading2: string; sub: string; call: string; directions: string };
   footer: { description: string; getInTouch: string; hours: string; explore: string; googleProfile: string; rights: string; tagline: string };
@@ -77,6 +80,13 @@ export const t: Record<Lang, TranslationData> = {
       heading1: "Eight reviews.",
       heading2: "Every one of them five stars.",
       sub: "We're a small boutique, so every visit counts — and our shoppers keep telling the same story.",
+      items: [
+        { quote: "Beautiful clothes and, above all, a lovely place to shop. Well done to the whole team!" },
+        { quote: "Gorgeous pieces and genuinely excellent service. I left with exactly what I was looking for." },
+        { quote: "A little boutique with real taste. The styling help made all the difference — I'll be back." },
+        { quote: "Warm welcome, beautiful selection, and they actually listen to what suits you. Highly recommend." },
+        { quote: "Found the dress for my event in ten minutes. Lovely owner, lovely shop." },
+      ],
     },
     visit: {
       eyebrow: "Come say hello",
@@ -163,6 +173,13 @@ export const t: Record<Lang, TranslationData> = {
       heading1: "Οκτώ κριτικές.",
       heading2: "Όλες με πέντε αστέρια.",
       sub: "Είμαστε μια μικρή μπουτίκ, οπότε κάθε επίσκεψη μετράει — και οι πελάτισσές μας λένε πάντα την ίδια ιστορία.",
+      items: [
+        { quote: "Όμορφα ρούχα και, πάνω απ' όλα, ένα υπέροχο μέρος για ψώνια. Μπράβο σε όλη την ομάδα!" },
+        { quote: "Υπέροχα κομμάτια και εξαιρετική εξυπηρέτηση. Έφυγα με ακριβώς αυτό που έψαχνα." },
+        { quote: "Μια μικρή μπουτίκ με πραγματικό γούστο. Η βοήθεια στο στυλ έκανε τη διαφορά — θα επιστρέψω." },
+        { quote: "Ζεστή υποδοχή, όμορφη συλλογή και σε ακούνε πραγματικά. Το συστήνω ανεπιφύλακτα." },
+        { quote: "Βρήκα το φόρεμα για την εκδήλωσή μου σε δέκα λεπτά. Υπέροχη ιδιοκτήτρια, υπέροχο κατάστημα." },
+      ],
     },
     visit: {
       eyebrow: "Πείτε μας γεια",
